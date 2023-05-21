@@ -22,9 +22,6 @@ security:
                 failure_handler: lexik_jwt_authentication.handler.authentication_failure
             refresh_jwt:
                 check_path: /api/token/refresh
-        logout_firewall:
-            logout:
-                path: /api/token/invalidate
         api:
             pattern: ^/api
             stateless: true
