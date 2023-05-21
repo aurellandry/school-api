@@ -3,3 +3,15 @@ controllers:
         path: ../src/Controller/
         namespace: App\Controller
     type: attribute
+
+api_authentication:
+    path: /api/login
+    methods: [POST]
+
+api_refresh_token:
+    path: /api/token/refresh
+    methods: [POST]
+
+api_token_invalidate:
+    path: /api/token/invalidate
+    methods: [POST]
