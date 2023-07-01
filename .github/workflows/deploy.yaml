@@ -10,6 +10,12 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Setup PHP with PECL extension
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.2'
+          extensions: imagick, swoole
+      
       - name: Checkout code
         uses: actions/checkout@v2
 
@@ -23,7 +29,7 @@ jobs:
           username: ${{ secrets.EC2_USERNAME }}
           key: ${{ secrets.EC2_PRIVATE_KEY_PATH }}
           source: .
-          target: /var/www/html
+          target: /var/www/html/school-api
 
       - name: SSH into EC2 and run commands
         uses: appleboy/ssh-action@master
@@ -32,6 +38,7 @@ jobs:
           username: ${{ secrets.EC2_USERNAME }}
           key: ${{ secrets.EC2_PRIVATE_KEY_PATH }}
           script: |
-            cd /var/www/html
+            cd /var/www/html/school-api
+            cp .env.prod .env
             php bin/console doctrine:migrations:migrate --no-interaction
 
