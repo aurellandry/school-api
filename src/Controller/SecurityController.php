@@ -12,7 +12,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class SecurityController extends AbstractController
 {
     #[Route('/api/logout', name: 'api_logout', methods: ['POST'])]
-    public function register(
+    public function logout(
         RefreshTokenRepository $refreshTokenRepository,
         RefreshTokenUpdater $refreshTokenUpdater
     ): JsonResponse
