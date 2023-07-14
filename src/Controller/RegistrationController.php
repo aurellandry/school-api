@@ -8,6 +8,7 @@ use App\Presenters\User\UserInputDTOReader;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 
@@ -29,9 +30,7 @@ class RegistrationController extends AbstractController
 
         $errors = array_merge(current($validator->validate($userInputDTO)), current($validator->validate($user)));
         if (count($errors) > 0) {
-            return new JsonResponse([
-                'error' => $errors[0]->getMessage()
-            ]);
+            throw new BadRequestHttpException($errors[0]->getMessage());
         }
 
         $userUpdater->save($user);
