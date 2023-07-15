@@ -26,6 +26,10 @@ class UserFactory
                 $userInputDTO->plainPassword
             )
         );
+        
+        if ($userRole = $userInputDTO->role) {
+            $user->setRoles([$userRole]);
+        }
 
         return $user;
     }

@@ -2,6 +2,7 @@
 
 namespace App\Presenters\User;
 
+use App\Entity\User;
 use Symfony\Component\Validator\Constraints as Assert;
 
 class UserInputDTO
@@ -21,4 +22,7 @@ class UserInputDTO
 
     #[Assert\NotNull]
     public string $plainPassword;
+
+    #[Assert\Choice(User::ROLES)]
+    public string $role;
 }

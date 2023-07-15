@@ -15,6 +15,7 @@ class UserInputDTOReader
         $userInputDTO->lastName = $content['lastName'];
         $userInputDTO->phone = $content['phone'] ?? null;
         $userInputDTO->plainPassword = $content['plainPassword'];
+        $userInputDTO->role = $content['role'];
 
         return $userInputDTO;
     }
