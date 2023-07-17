@@ -2,8 +2,6 @@
 
 namespace App\Presenters\User;
 
-use Symfony\Component\HttpFoundation\Request;
-
 class UserInputDTOReader
 {
     public function read(array $content): UserInputDTO

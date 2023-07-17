@@ -1,0 +1,14 @@
+<h1>Demande de contact</h1>
+
+<p>
+    Vous avez reçu une demande de contact de <b>{{ email.toName }}</b>
+    ({{ email.to[0].address }}) :
+</p>
+
+<blockquote>
+    <i>{{ message|raw }}</i>
+</blockquote>
+
+<p>
+    Répondez au plus vite !
+</p>
